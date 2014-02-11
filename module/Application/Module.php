@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework (http://framework.zend.com/)
  *
@@ -12,22 +13,19 @@ namespace Application;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 
-class Module
-{
-    public function onBootstrap(MvcEvent $e)
-    {
-        $eventManager        = $e->getApplication()->getEventManager();
+class Module {
+
+    public function onBootstrap(MvcEvent $e) {
+        $eventManager = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
     }
 
-    public function getConfig()
-    {
+    public function getConfig() {
         return include __DIR__ . '/config/module.config.php';
     }
 
-    public function getAutoloaderConfig()
-    {
+    public function getAutoloaderConfig() {
         return array(
             'Zend\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
@@ -36,4 +34,25 @@ class Module
             ),
         );
     }
+
+    /**
+     * Register View Helper
+     */
+    public function getViewHelperConfig() {
+        return array(
+            # registrar View Helper com injecao de dependecia
+            'factories' => array(
+                'menuAtivo' => function($sm) {
+                    return new View\Helper\MenuAtivo($sm->getServiceLocator()->
+                            get('Request'));
+                 },
+                         
+                'message' => function($sm) {
+                    return new View\Helper\Message($sm->getServiceLocator()->
+                            get('ControllerPluginManager')->get('flashmessenger'));
+                },
+            )
+        );
+    }
+
 }

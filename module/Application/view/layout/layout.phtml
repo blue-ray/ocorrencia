@@ -31,7 +31,8 @@
                 ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
                 ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css')
         ;
-        ?>
+        ?>               
+        
     </head>
     <body>
         <div class="container">
@@ -43,6 +44,8 @@
                 <h3 class="text-muted"><?php echo $NAME_APPLICATION; ?></h3>
             </div>
 
+            <?php echo $this->message(); ?>
+            
             <div class="row marketing">
                 <?php echo $this->content; ?>
             </div>
