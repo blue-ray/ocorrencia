@@ -28,9 +28,9 @@
         echo $this
                 ->headLink()
                 //->prependStylesheet($this->basePath() . 'lib/css/bootstrap.css')
-                ->prependStylesheet($this->basePath() . 'lib/css/sb-admin.css')
-                ->prependStylesheet($this->basePath() . 'lib/css/bootstrap.min.css')
-                ->prependStylesheet($this->basePath() . 'lib/font-awesome/css/font-awesome.min.css')
+                ->prependStylesheet($this->basePath() . '/lib/css/sb-admin.css')
+                ->prependStylesheet($this->basePath() . '/lib/css/bootstrap.min.css')
+                ->prependStylesheet($this->basePath() . '/lib/font-awesome/css/font-awesome.min.css')
         ;
         ?>               
         
@@ -151,11 +151,11 @@
                 ->headScript()                
                 ->prependFile($this->basePath() . 'http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js')
                 ->prependFile($this->basePath() . 'http://cdn.oesmith.co.uk/morris-0.4.3.min.js')
-                ->prependFile($this->basePath() . 'lib/js/morris/chart-data-morris.js')
-                ->prependFile($this->basePath() . 'lib/js/tablesorter/jquery.tablesorter.js')
-                ->prependFile($this->basePath() . 'lib/js/tablesorter/tables.js')
-                ->prependFile($this->basePath() . 'lib/js/bootstrap.js')
-                ->prependFile($this->basePath() . 'lib/js/jquery-1.10.2.js')
+                ->prependFile($this->basePath() . '/lib/js/morris/chart-data-morris.js')
+                ->prependFile($this->basePath() . '/lib/js/tablesorter/jquery.tablesorter.js')
+                ->prependFile($this->basePath() . '/lib/js/tablesorter/tables.js')
+                ->prependFile($this->basePath() . '/lib/js/bootstrap.js')
+                ->prependFile($this->basePath() . '/lib/js/jquery-1.10.2.js')
         ;
 
         echo $this->inlineScript();
