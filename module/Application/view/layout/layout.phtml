@@ -51,7 +51,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">Ocorrência</a>
+          <a class="navbar-brand" href="<?php echo $this->url("application"); ?>">Ocorrência</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -151,7 +151,7 @@
                 ->headScript()                
                 ->prependFile($this->basePath() . 'http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js')
                 ->prependFile($this->basePath() . 'http://cdn.oesmith.co.uk/morris-0.4.3.min.js')
-                ->prependFile($this->basePath() . '/lib/js/morris/chart-data-morris.js')
+                //->prependFile($this->basePath() . '/lib/js/morris/chart-data-morris.js')
                 ->prependFile($this->basePath() . '/lib/js/tablesorter/jquery.tablesorter.js')
                 ->prependFile($this->basePath() . '/lib/js/tablesorter/tables.js')
                 ->prependFile($this->basePath() . '/lib/js/bootstrap.js')

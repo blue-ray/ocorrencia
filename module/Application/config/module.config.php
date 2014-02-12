@@ -10,13 +10,14 @@
 return array(
     'router' => array(
         'routes' => array(
-            'home' => array(
+            'application' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
                     'route'    => '/',
                     'defaults' => array(
-                        'controller' => 'IndexController',
+                        'controller' => 'Application\Controller\Index',
                         'action'     => 'index',
+                        'module'     => 'application'
                     ),
                 ),
             ),
@@ -24,14 +25,14 @@ return array(
             // new controllers and actions without needing to create a new
             // module. Simply drop new controllers in, and you can access them
             // using the path /application/:controller/:action
-            'application' => array(
+            'home' => array(
                 'type'    => 'Literal',
                 'options' => array(
-                    'route'    => '/application',
+                    'route'    => '/home',
                     'defaults' => array(
-                        '__NAMESPACE__' => 'IndexController',
-                        'controller'    => 'Index',
+                        'controller'    => 'Application\Controller\Index',
                         'action'        => 'index',
+                        'module'        => 'application'
                     ),
                 ),
                 'may_terminate' => true,
@@ -73,7 +74,7 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'IndexController' => 'Application\Controller\IndexController'
+            'Application\Controller\Index' => 'Application\Controller\IndexController'
         ),
     ),
     'view_manager' => array(
@@ -84,7 +85,6 @@ return array(
         'exception_template'       => 'error/index',
         'template_map' => array(
             'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-            'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
         ),
@@ -92,11 +92,13 @@ return array(
             __DIR__ . '/../view',
         ),
     ),
+    
     // Placeholder for console routes
+    /*
     'console' => array(
         'router' => array(
             'routes' => array(
             ),
         ),
-    ),
+    ),*/
 );
