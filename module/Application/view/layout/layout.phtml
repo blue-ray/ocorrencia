@@ -26,38 +26,145 @@
         <!-- Styles -->
         <?php
         echo $this
-                ->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
-                ->prependStylesheet($this->basePath() . '/css/style.css')
-                ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
-                ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css')
+                ->headLink()
+                //->prependStylesheet($this->basePath() . 'lib/css/bootstrap.css')
+                ->prependStylesheet($this->basePath() . 'lib/css/sb-admin.css')
+                ->prependStylesheet($this->basePath() . 'lib/css/bootstrap.min.css')
+                ->prependStylesheet($this->basePath() . 'lib/font-awesome/css/font-awesome.min.css')
         ;
         ?>               
         
     </head>
+    
+    <h3 class="text-muted"><?php echo $NAME_APPLICATION; ?></h3>
+    
+    
     <body>
-        <div class="container">
-            <div class="header">
-                <ul class="nav nav-pills pull-right">
-                    <li class="active"><a href="#">Início</a></li>
-                    <li><a href="#">Sobre</a></li>
-                </ul>
-                <h3 class="text-muted"><?php echo $NAME_APPLICATION; ?></h3>
-            </div>
 
-            <?php echo $this->message(); ?>
-            
-            <div class="row marketing">
-                <?php echo $this->content; ?>
-            </div>
+    <div id="wrapper">
 
-            <div class="footer">
-                <p class="muted credit pull-left">Company <a href="">© 2014</a></p>
-                <p class="muted credit pull-right">Desenvolvido por <a href="https://github.com/blue-ray/ocorrencia">Blue Ray</a>.</p>
-            </div>
+      <!-- Sidebar -->
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">SB Admin</a>
         </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav side-nav">
+            <li class="active"><a href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li><a href="charts.html"><i class="fa fa-bar-chart-o"></i> Charts</a></li>
+            <li><a href="tables.html"><i class="fa fa-table"></i> Tables</a></li>
+            <li><a href="forms.html"><i class="fa fa-edit"></i> Forms</a></li>
+            <li><a href="typography.html"><i class="fa fa-font"></i> Typography</a></li>
+            <li><a href="bootstrap-elements.html"><i class="fa fa-desktop"></i> Bootstrap Elements</a></li>
+            <li><a href="bootstrap-grid.html"><i class="fa fa-wrench"></i> Bootstrap Grid</a></li>
+            <li><a href="blank-page.html"><i class="fa fa-file"></i> Blank Page</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i> Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Dropdown Item</a></li>
+                <li><a href="#">Another Item</a></li>
+                <li><a href="#">Third Item</a></li>
+                <li><a href="#">Last Item</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right navbar-user">
+            <li class="dropdown messages-dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> Messages <span class="badge">7</span> <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-header">7 New Messages</li>
+                <li class="message-preview">
+                  <a href="#">
+                    <span class="avatar"><img src="http://placehold.it/50x50"></span>
+                    <span class="name">John Smith:</span>
+                    <span class="message">Hey there, I wanted to ask you something...</span>
+                    <span class="time"><i class="fa fa-clock-o"></i> 4:34 PM</span>
+                  </a>
+                </li>
+                <li class="divider"></li>
+                <li class="message-preview">
+                  <a href="#">
+                    <span class="avatar"><img src="http://placehold.it/50x50"></span>
+                    <span class="name">John Smith:</span>
+                    <span class="message">Hey there, I wanted to ask you something...</span>
+                    <span class="time"><i class="fa fa-clock-o"></i> 4:34 PM</span>
+                  </a>
+                </li>
+                <li class="divider"></li>
+                <li class="message-preview">
+                  <a href="#">
+                    <span class="avatar"><img src="http://placehold.it/50x50"></span>
+                    <span class="name">John Smith:</span>
+                    <span class="message">Hey there, I wanted to ask you something...</span>
+                    <span class="time"><i class="fa fa-clock-o"></i> 4:34 PM</span>
+                  </a>
+                </li>
+                <li class="divider"></li>
+                <li><a href="#">View Inbox <span class="badge">7</span></a></li>
+              </ul>
+            </li>
+            <li class="dropdown alerts-dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> Alerts <span class="badge">3</span> <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Default <span class="label label-default">Default</span></a></li>
+                <li><a href="#">Primary <span class="label label-primary">Primary</span></a></li>
+                <li><a href="#">Success <span class="label label-success">Success</span></a></li>
+                <li><a href="#">Info <span class="label label-info">Info</span></a></li>
+                <li><a href="#">Warning <span class="label label-warning">Warning</span></a></li>
+                <li><a href="#">Danger <span class="label label-danger">Danger</span></a></li>
+                <li class="divider"></li>
+                <li><a href="#">View All</a></li>
+              </ul>
+            </li>
+            <li class="dropdown user-dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
+                <li><a href="#"><i class="fa fa-envelope"></i> Inbox <span class="badge">7</span></a></li>
+                <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
+                <li class="divider"></li>
+                <li><a href="#"><i class="fa fa-power-off"></i> Log Out</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </nav>
+
+      <div id="page-wrapper">
+        <?php echo $this->message(); ?>
+        <?php echo $this->content; ?>
+          
+    </div><!-- /#wrapper -->
 
         <!-- Scripts -->
         <?php
+        
+        echo $this
+                ->headScript()                
+                ->prependFile($this->basePath() . 'http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js')
+                ->prependFile($this->basePath() . 'http://cdn.oesmith.co.uk/morris-0.4.3.min.js')
+                ->prependFile($this->basePath() . 'lib/js/morris/chart-data-morris.js')
+                ->prependFile($this->basePath() . 'lib/js/tablesorter/jquery.tablesorter.js')
+                ->prependFile($this->basePath() . 'lib/js/tablesorter/tables.js')
+                ->prependFile($this->basePath() . 'lib/js/bootstrap.js')
+                ->prependFile($this->basePath() . 'lib/js/jquery-1.10.2.js')
+        ;
+
+        echo $this->inlineScript();
+        ?>
+        
+        <?php
+        /*
         echo $this
                 ->headScript()
                 ->prependFile($this->basePath() . '/js/bootstrap.min.js')
@@ -66,7 +173,7 @@
                 ->prependFile($this->basePath() . '/js/html5shiv.js', 'text/javascript', array('conditional' => 'lt IE 9',))
         ;
 
-        echo $this->inlineScript();
+        echo $this->inlineScript();*/
         ?>
     </body>
 </html>
