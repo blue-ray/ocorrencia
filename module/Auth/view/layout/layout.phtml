@@ -6,7 +6,7 @@
 
         <!-- Title Head -->
         <?php
-        $NAME_APPLICATION = 'Sistema de Ocorrência';
+        $NAME_APPLICATION = 'Sistema Gerenciador de Ocorrências - SGO';
         echo $this
                 ->headTitle($NAME_APPLICATION)
                 ->setSeparator(' - ')
@@ -37,17 +37,18 @@
 
     <body>
         <div class="container">
-
+            <!--
             <div class="starter-template">
-                <h1><?php echo $NAME_APPLICATION; ?></h1>
+                <h1 class="active"><?php echo $NAME_APPLICATION; ?></h1>
             </div>
+            -->
 
             <!-- <div class="row marketing"> -->
             <?php echo $this->content; ?>
             <!-- </div> -->
 
-            <div class="footer" style="margin-top: 100px">
-                <p class="muted credit pull-right">Desenvolvido por <a href="">Blue Ray</a>.</p>
+            <div class="footer" style="margin-top: 100px;text-align: center">
+                <p class="muted credit pull-center">SGO :: Sistema Gerenciador de Ocorrências - Desenvolvido por <a href="">Blue Ray</a>.</p>
             </div>
 
         </div>

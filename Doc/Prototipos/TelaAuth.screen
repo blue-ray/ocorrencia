@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Browser" id="2" x="214" y="72" text="Browser&#xA;http://..." measuredWidth="400" measuredHeight="300"/>
+  <widgets xsi:type="model:TextField" id="3" x="350" y="183" width="128" text="Usuário" measuredWidth="128" measuredHeight="21">
+    <font size="11px"/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="4" x="350" y="205" width="128" text="Senha" measuredWidth="128" measuredHeight="21">
+    <font size="11px"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="5" x="350" y="232" width="128" text="Logar" measuredWidth="128" measuredHeight="23" background="#0b5394">
+    <font size="11px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="6" x="350" y="156" width="126" text="SGO :: Autenticação" measuredWidth="126" measuredHeight="25" textAlignment="Center">
+    <font size="13px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="7" x="228" y="280" text="SGO :: Sistema Gerenciador de Ocorrências - Desenvolvido por Blue Ray" measuredWidth="372" measuredHeight="21">
+    <font size="10px"/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>
