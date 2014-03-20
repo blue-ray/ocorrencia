@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore" xmlns:o="http://wireframesketcher.com/1.0/model/overrides">
+  <widgets xsi:type="model:Master" id="1" x="272" y="152" measuredWidth="300" measuredHeight="213">
+    <screen xsi:type="model:Screen" href="assets/Bootstrap/Templates/Signin.screen#/"/>
+    <overrides>
+      <widgetChanges xsi:type="o:Delete" ref="4"/>
+      <widgets ref="3" y="104"/>
+      <widgets ref="5" link="AuthErro.screen"/>
+    </overrides>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

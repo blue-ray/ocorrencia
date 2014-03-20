@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Browser" id="2" x="224" y="112" text="Browser&#xA;http://..." measuredWidth="400" measuredHeight="300"/>
+  <widgets xsi:type="model:TextField" id="3" x="384" y="224" text="Text field" measuredWidth="59" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:TextArea" id="4" x="360" y="259" text="A *paragraph* of text&#xA;A _second_ row of text" measuredWidth="140" measuredHeight="46" customData="fgfgfg">
+    <font/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>
