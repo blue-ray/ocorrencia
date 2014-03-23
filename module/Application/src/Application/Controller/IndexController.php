@@ -19,4 +19,6 @@ class IndexController extends AbstractActionController
         $this->flashMessenger()->addSuccessMessage("Mensagem de teste");
         return new ViewModel();
     }
+    
+    //http://igorrocha.com.br/tutorial-zf2-parte-6-rotas-controllers-actions-helpers-e-jquery/5/
 }
