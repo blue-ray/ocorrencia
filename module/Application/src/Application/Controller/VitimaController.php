@@ -120,8 +120,8 @@ class VitimaController extends AbstractActionController {
         // formulário com dados preenchidos
         $form = array(
             'nome' => 'Igor Rocha',
-            "telefone_principal" => "(085) 8585-8585",
-            "telefone_secundario" => "(085) 8585-8585",
+            "telefone" => "(085) 8585-8585",
+            "data_nascimento" => "(085) 8585-8585",
         );
 
         // dados eviados para editar.phtml

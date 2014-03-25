@@ -53,9 +53,10 @@
                             <tr>
                                 <th class="header headerSortDown"># <i class="fa fa-sort"></i></th>
                                 <th class="header">Nome <i class="fa fa-sort"></i></th>
-                                <th class="header">Tel. Principal <i class="fa fa-sort"></i></th>
-                                <th class="header">Tel. Qua. <i class="fa fa-sort"></i></th>                        
-                                <th class="header">Data Criação <i class="fa fa-sort"></i></th>
+                                <th class="header">Endereço <i class="fa fa-sort"></i></th>
+                                <th class="header">Telefone <i class="fa fa-sort"></i></th>
+                                <th class="header">Data de Nascimento <i class="fa fa-sort"></i></th>
+                                <th class="header">Sexo <i class="fa fa-sort"></i></th>
                                 <th class="header">Ação <i class="fa fa-sort"></i></th>
                             </tr>
                         </thead>
@@ -64,10 +65,11 @@
                             <?php for ($i = 1; $i <= 5; $i++): ?>
                                 <tr>
                                     <td><?php echo $i; ?></td>
-                                    <td>Fortaleza Ceará Brasil <?php echo " - " . $i; ?></td>
+                                    <td>Pessoa <?php echo " - " . $i; ?></td>
+                                    <td>Endereço <?php echo $i + 2; ?> </td>
                                     <td>(085)85858585</td>
-                                    <td class="text-center"><?php echo $i + 2; ?></td>
                                     <td><?php echo "02/02/2001"; ?></td>
+                                    <td class="text-center">F</td>
                                     <td>
                                         <a class="btn btn-xs btn-info" title="Visualizar" href="<?php echo $this->url('vitimas', array('action' => 'detalhes', 'id' => $i)); ?>"><span class="glyphicon glyphicon-new-window"></span></a>
                                         <a class="btn btn-xs btn-warning" title="Editar" href="<?php echo $this->url('vitimas', array("action" => "editar", "id" => $i,)); ?>"><span class="glyphicon glyphicon-edit"></span></a>
