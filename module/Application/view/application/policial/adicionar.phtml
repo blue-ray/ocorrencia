@@ -1,0 +1,77 @@
+<div class="row">
+
+    <div class="col-lg-12">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    <i class="fa fa-user"></i> Novo Policial           
+                </div>
+            </div>
+            <form class="form-horizontal" role="form" method="POST" action="<?php echo $this->url('policiais', array('action' => 'adicionar')); ?>">
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="inputNumeral" class="col-lg-3 col-md-3 control-label">Numeral:</label>
+                        <div class="col-lg-2 col-md-2">
+                            <input type="text" name="numeral" class="form-control" id="inputNumeral" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputNome" class="col-lg-3 col-md-3 control-label">Nome:</label>
+                        <div class="col-lg-6 col-md-6">
+                            <input type="text" name="nome" class="form-control" id="inputNome" placeholder="Nome Completo">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputNomeGuerra" class="col-lg-3 col-md-3 control-label">Nome de Guerra:</label>
+                        <div class="col-lg-6 col-md-6">
+                            <input type="text" name="nome_guerra" class="form-control" id="inputNomeGuerra" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputMatricula" class="col-lg-3 col-md-3 control-label">Matrícula:</label>
+                        <div class="col-lg-2 col-md-2">
+                            <input type="text" name="matricula" class="form-control" id="inputMatricula" >
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label for="selectGraduacao" class="col-lg-3 col-md-3 control-label">Graduação:</label>
+                        <div class="col-lg-2 col-md-2">
+                            <select  name="id_graduacao" class="form-control" id="selectGraduacao" >
+                                <option value="">Selecione</option>
+                                <option value="1">Soldado</option>
+                                <option value="2">Cabo</option>
+                                <option value="3">Sargento</option>
+                                <option value="4">Tenente</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputDataNasc" class="col-lg-3 col-md-3 control-label">Nascimento:</label>
+                        <div class="col-lg-2 col-md-2">
+                            <input type="date" name="data_nasc" class="form-control" id="inputDataNasc" maxlength="10"  >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="radioSexo" class="col-lg-3 col-md-3 control-label">Sexo:</label>
+                        <div class="col-lg-9  col-md-9">
+                            <label class="radio-inline">
+                                <input type="radio" name="sexo" id="radioSexo1" value="F" > Feminino
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="sexo" id="radioSexo2" value="M"> Masculino
+                            </label>
+                        </div>
+                    </div>
+                   
+                </div>
+                <div class="panel-footer">
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                    <a href="<?php echo $this->url('policiais'); ?>" class="btn btn-default">Voltar</a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</div>

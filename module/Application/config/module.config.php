@@ -38,6 +38,22 @@ return array(
                 ),
             ),
             
+            # segment para controller policial
+            'policiais' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/policiais[/:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'PolicialController',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
+            
             
             # segment para controller municipio
             'Municipio' => array(
@@ -112,7 +128,8 @@ return array(
         'invokables' => array(
             'Application\Controller\Index' => 'Application\Controller\IndexController',
             'MunicipioController' => 'Application\Controller\MunicipioController',
-            'VitimaController' => 'Application\Controller\VitimaController'
+            'VitimaController' => 'Application\Controller\VitimaController',
+            'PolicialController' => 'Application\Controller\PolicialController'
         ),
     ),
     'view_manager' => array(

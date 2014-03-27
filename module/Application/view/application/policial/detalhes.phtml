@@ -1,0 +1,44 @@
+<div class="row">
+
+    <div class="col-lg-12">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    <i class="fa fa-user"></i> Detalhes Policial ID <?php echo $this->policial->id_policial; ?>            
+                </div>
+            </div>
+            <div class="panel-body">
+                <dl class="dl-horizontal">
+                    <dt>Numeral:</dt>
+                    <dd><?php echo $this->policial->numeral; ?></dd>
+                    <dt>Nome:</dt>
+                    <dd><?php echo $this->policial->nome; ?></dd>
+                    <dt>Nome Guerra:</dt>
+                    <dd><?php echo $this->policial->nome_guerra; ?></dd>
+                    <dt>Matrícula:</dt>
+                    <dd><?php echo $this->policial->matricula; ?></dd>
+                    <dt>Graduação:</dt>
+                    <dd><?php echo $this->policial->id_graduacao; ?></dd>
+                    <dt>Nascimento:</dt>
+                    <dd><?php echo $this->policial->data_nasc; ?></dd>
+                    <dt>Sexo:</dt>
+                    <dd>
+                        <?php
+                        if ($this->policial->sexo == 'F')
+                            echo "Feminino";
+                        else
+                            echo "Masculino";
+                        ?>
+                    </dd>
+                </dl>
+            </div>
+            <div class="panel-footer">
+                <a href="<?php echo $this->url('policiais', array('action' => 'editar', 'id' => $this->id)); ?>" class="btn btn-warning btn-sm">Editar Policial</a>
+                <a href="<?php echo $this->url('policiais'); ?>" class="btn btn-default btn-sm">Voltar</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
