@@ -42,7 +42,7 @@ return array(
             'policiais' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route' => '/policiais[/:action][/:id]',
+                    'route' => '/policiais[/:action][/:id][/:confirm]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[0-9]+',

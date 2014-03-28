@@ -20,7 +20,7 @@
                     <dd><?php echo $this->policial->matricula; ?></dd>
                     <dt>Graduação:</dt>
                     <dd><?php echo $this->policial->id_graduacao; ?></dd>
-                    <dt>Nascimento:</dt>
+                    <dt>Data de Nascimento:</dt>
                     <dd><?php echo $this->policial->data_nasc; ?></dd>
                     <dt>Sexo:</dt>
                     <dd>
@@ -34,7 +34,7 @@
                 </dl>
             </div>
             <div class="panel-footer">
-                <a href="<?php echo $this->url('policiais', array('action' => 'editar', 'id' => $this->id)); ?>" class="btn btn-warning btn-sm">Editar Policial</a>
+                <a href="<?php echo $this->url('policiais', array('action' => 'editar', 'id' => $this->policial->id_policial)); ?>" class="btn btn-warning btn-sm">Editar Policial</a>
                 <a href="<?php echo $this->url('policiais'); ?>" class="btn btn-default btn-sm">Voltar</a>
             </div>
         </div>

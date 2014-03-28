@@ -5,39 +5,73 @@
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <div class="panel-title">
-                    Editar Contato ID <?php echo $this->id; ?>        
+                   <i class="fa fa-user"></i> Editar Policial ID <?php echo $this->policial->id_policial; ?>           
                 </div>
             </div>
-            <form class="form-horizontal" role="form" method="POST" action="<?php echo $this->url('vitimas', array('action' => 'editar')); ?>">
+            <form class="form-horizontal" role="form" method="POST" action="<?php echo $this->url('policiais', array('action' => 'editar')); ?>">
                 <div class="panel-body">
                     <div class="form-group">
+                        <label for="inputNumeral" class="col-lg-3 col-md-3 control-label">Numeral:</label>
+                        <div class="col-lg-2 col-md-2">
+                            <input type="text" name="numeral" class="form-control" id="inputNumeral" value="<?php echo $this->policial->numeral; ?>" >
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="inputNome" class="col-lg-3 col-md-3 control-label">Nome:</label>
-                        <div class="col-lg-9 col-md-9">
-                            <input type="text" name="nome" class="form-control" id="inputNome" placeholder="Nome Completo" value="<?php echo $this->form['nome']; ?>">
+                        <div class="col-lg-6 col-md-6">
+                            <input type="text" name="nome" class="form-control" id="inputNome" placeholder="Nome Completo" value="<?php echo $this->policial->nome; ?>">
                         </div>
                     </div>
-
                     <div class="form-group">
-                        <label for="inputTelefone" class="col-lg-3 col-md-3 control-label">Telefone:</label>
-                        <div class="col-lg-9  col-md-9">
-                            <input type="text" name="telefone" class="form-control" id="inputTelefonePrincipal" placeholder="Digite seu telefone" value="<?php echo $this->form['telefone']; ?>">
+                        <label for="inputNomeGuerra" class="col-lg-3 col-md-3 control-label">Nome de Guerra:</label>
+                        <div class="col-lg-6 col-md-6">
+                            <input type="text" name="nome_guerra" class="form-control" id="inputNomeGuerra" value="<?php echo $this->policial->nome_guerra; ?>" >
                         </div>
                     </div>
-
                     <div class="form-group">
-                        <label for="inputDataNascimento" class="col-lg-3 col-md-3 control-label">Data de Nascimento:</label>
-                        <div class="col-lg-9  col-md-9">
-                            <input type="text" name="data_nascimento" class="form-control" id="inputTelefoneSecundario" placeholder="Digite a data de nascimento" value="<?php echo $this->form['data_nascimento']; ?>">
+                        <label for="inputMatricula" class="col-lg-3 col-md-3 control-label">Matrícula:</label>
+                        <div class="col-lg-2 col-md-2">
+                            <input type="text" name="matricula" class="form-control" id="inputMatricula" value="<?php echo $this->policial->matricula; ?>">
                         </div>
                     </div>
+                     <div class="form-group">
+                        <label for="selectGraduacao" class="col-lg-3 col-md-3 control-label">Graduação:</label>
+                        <div class="col-lg-2 col-md-2">
+                            <select  name="id_graduacao" class="form-control" id="selectGraduacao" >
+                                <option value="">Selecione</option>
+                                <option value="1" <?php echo $this->policial->id_graduacao == 1? "selected":""; ?>>Soldado</option>
+                                <option value="2" <?php echo $this->policial->id_graduacao == 2? "selected":""; ?>>Cabo</option>
+                                <option value="3" <?php echo $this->policial->id_graduacao == 3? "selected":""; ?>>Sargento</option>
+                                <option value="4" <?php echo $this->policial->id_graduacao == 4? "selected":""; ?>>Tenente</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputDataNasc" class="col-lg-3 col-md-3 control-label">Data de Nascimento:</label>
+                        <div class="col-lg-2 col-md-2">
+                            <input type="date" name="data_nasc" class="form-control" id="inputDataNasc" maxlength="10"  value="<?php echo $this->policial->data_nasc; ?>">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="radioSexo" class="col-lg-3 col-md-3 control-label">Sexo:</label>
+                        <div class="col-lg-9  col-md-9">
+                            <label class="radio-inline">
+                                <input type="radio" name="sexo" id="radioSexo1" value="F" <?php echo $this->policial->sexo == 'F'? "checked":""; ?>> Feminino
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="sexo" id="radioSexo2" value="M" <?php echo $this->policial->sexo == 'M'? "checked":""; ?>> Masculino
+                            </label>
+                        </div>
+                    </div>
+                   
                 </div>
                 <div class="panel-footer">
-                    <input type="hidden" name="id" value="<?php echo $this->id; ?>">
-                    <button type="submit" class="btn btn-primary">Atualizar Contato</button>
-                    <a href="<?php echo $this->url('vitimas'); ?>" class="btn btn-default">Voltar</a>
+                    <input type="hidden" name="id" value="<?php echo $this->policial->id_policial; ?>">
+                    <button type="submit" class="btn btn-primary">Atualizar Policial</button>
+                    <a href="<?php echo $this->url('policiais'); ?>" class="btn btn-default">Voltar</a>
                 </div>
             </form>
-        </div>  
+        </div>
 
     </div>
 
