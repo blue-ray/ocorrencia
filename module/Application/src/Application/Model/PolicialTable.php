@@ -14,6 +14,7 @@ use Zend\Db\Adapter\Adapter,
 class PolicialTable {
 
     protected $tableGateway;
+    protected $adapter;
     /**
      * Contrutor com dependencia do Adapter do Banco
      * 
@@ -21,10 +22,11 @@ class PolicialTable {
      */
     
     public function __construct(Adapter $adapter) {
+        $this->adapter = $adapter;
         $resultSetPrototype = new ResultSet();
         $resultSetPrototype->setArrayObjectPrototype(new Policial());
 
-        $this->tableGateway = new TableGateway('policial', $adapter, null, $resultSetPrototype);
+        $this->tableGateway = new TableGateway('policial', $this->adapter, null, $resultSetPrototype);
     }
 
     /**
@@ -32,8 +34,14 @@ class PolicialTable {
      * 
      * @return ResultSet
      */
-    public function fetchAll() {
-        return $this->tableGateway->select();
+    public function fetchAll($currentPage = 1, $countPerPage = 2) {
+        //return $this->tableGateway->select();
+        $dbTableGatewayAdapter = new \Zend\Paginator\Adapter\DbTableGateway($this->tableGateway);
+        $paginator = new \Zend\Paginator\Paginator($dbTableGatewayAdapter);
+        $paginator->setItemCountPerPage($countPerPage);
+        $paginator->setCurrentPageNumber($currentPage);
+        
+        return $paginator;
     }
 
     /**
@@ -56,16 +64,16 @@ class PolicialTable {
     public function salvarPolicial(Policial $policial)
     {
         $data = array(
-            'numeral'       => $policial->numeral,
-            'nome'          => $policial->nome,
-            'nome_guerra'   => $policial->nome_guerra,
-            'matricula'     => $policial->matricula,
-            'id_graduacao'  => $policial->id_graduacao,
-            'data_nasc'     => $policial->data_nasc,
-            'sexo'          => $policial->sexo,
+            'numeral'       => $policial->getNumeral(),
+            'nome'          => $policial->getNome(),
+            'nome_guerra'   => $policial->getNome_guerra(),
+            'matricula'     => $policial->getMatricula(),
+            'id_graduacao'  => $policial->getId_graduacao(),
+            'data_nasc'     => $policial->getData_nasc(),
+            'sexo'          => $policial->getSexo()
         );
 
-        $id = (int)$policial->id_policial;
+        $id = (int)$policial->getId_policial();
         if ($id == 0) {
             $this->tableGateway->insert($data);
         } else {

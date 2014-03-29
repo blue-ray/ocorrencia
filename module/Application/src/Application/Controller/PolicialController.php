@@ -10,14 +10,13 @@ use Application\Model\Policial;
 class PolicialController extends AbstractActionController {
 
     public function indexAction() {
-        // localizar adapter do banco
-        $adapter = $this->getServiceLocator()->get('AdapterDb');
-
-        // model PolicialTable instanciado
-        $modelPolicial = new ModelPolicial($adapter);
+         // Numero da página a ser exibida
+        $currentPage = $this->params()->fromQuery('pagina');
         
+        // Quantidade de itens por págima
+        $countPerPage = "5";   
         // enviar para view o array com key policial e value com todos os policias
-        return new ViewModel(array('policiais' => $modelPolicial->fetchAll()));
+        return new ViewModel(array('policiais' => $this->getPolicialTable()->fetchAll($currentPage,$countPerPage)));
     }
 
     public function adicionarAction() {
@@ -34,21 +33,16 @@ class PolicialController extends AbstractActionController {
             if ($formularioValido) {
                 
                 $policial = new Policial();
-                $policial->id_policial  = 0;
-                $policial->id_graduacao = $postData['id_graduacao'];
-                $policial->numeral      = $postData['numeral'];
-                $policial->nome         = strtoupper($postData['nome']);
-                $policial->nome_guerra  = strtoupper($postData['nome_guerra']);
-                $policial->matricula    = $postData['matricula'];
-                $policial->data_nasc    = $postData['data_nasc'];
-                $policial->sexo         = $postData['sexo'];
+                $policial->setId_policial(0);
+                $policial->setId_graduacao($postData['id_graduacao']);
+                $policial->setNumeral($postData['numeral']);
+                $policial->setNome(strtoupper($postData['nome']));
+                $policial->setNome_guerra(strtoupper($postData['nome_guerra']));
+                $policial->setMatricula($postData['matricula']);
+                $policial->setData_nasc($postData['data_nasc']);
+                $policial->setSexo($postData['sexo']);
                 
-                // localizar adapter do banco
-                $adapter = $this->getServiceLocator()->get('AdapterDb');
-
-                // model PolicialTable instanciado
-                $modelPolicial = new ModelPolicial($adapter);
-                $modelPolicial->salvarPolicial($policial);
+                $this->getPolicialTable()->salvarPolicial($policial);
                
                 $this->flashMessenger()->addSuccessMessage("Policial cadastrado com sucesso");
 
@@ -79,14 +73,8 @@ class PolicialController extends AbstractActionController {
             return $this->redirect()->toRoute('policiais');
         }
 
-       
-        $adapter = $this->getServiceLocator()->get('AdapterDb');
-
-        // model PolicialTable instanciado
-        $modelPolicial = new ModelPolicial($adapter);
-        
         // enviar para view o array com key policial e value com todos os policias
-        return new ViewModel(array('policial' => $modelPolicial->find($id)));
+        return new ViewModel(array('policial' => $this->getPolicialTable()->find($id)));
     }
 
     public function editarAction() {
@@ -97,27 +85,23 @@ class PolicialController extends AbstractActionController {
         if ($request->isPost()) {
             // obter e armazenar valores do post
             $postData = $request->getPost()->toArray();
-            $formularioValido = false;
+            $formularioValido = true;
 
             // verifica se o formulário segue a validação proposta
             if ($formularioValido) {
                 
                 $policial = new Policial();
-                $policial->id_policial  = $postData['id'];
-                $policial->id_graduacao = $postData['id_graduacao'];
-                $policial->numeral      = $postData['numeral'];
-                $policial->nome         = strtoupper($postData['nome']);
-                $policial->nome_guerra  = strtoupper($postData['nome_guerra']);
-                $policial->matricula    = $postData['matricula'];
-                $policial->data_nasc    = $postData['data_nasc'];
-                $policial->sexo         = $postData['sexo'];
+                $policial->setId_policial($postData['id']);
+                $policial->setId_graduacao($postData['id_graduacao']);
+                $policial->setNumeral($postData['numeral']);
+                $policial->setNome(strtoupper($postData['nome']));
+                $policial->setNome_guerra(strtoupper($postData['nome_guerra']));
+                $policial->setMatricula($postData['matricula']);
+                $policial->setData_nasc($postData['data_nasc']);
+                $policial->setSexo($postData['sexo']);
                 
-                // localizar adapter do banco
-                $adapter = $this->getServiceLocator()->get('AdapterDb');
-
-                // model PolicialTable instanciado
-                $modelPolicial = new ModelPolicial($adapter);
-                $modelPolicial->salvarPolicial($policial);
+                
+                $this->getPolicialTable()->salvarPolicial($policial);
                 
                 $this->flashMessenger()->addSuccessMessage("Policial editado com sucesso");
 
@@ -165,12 +149,8 @@ class PolicialController extends AbstractActionController {
             $this->flashMessenger()->addMessage("Policial não encotrada");
         } else {
             
-            $adapter = $this->getServiceLocator()->get('AdapterDb');
-
-            // model PolicialTable instanciado
-            $modelPolicial = new ModelPolicial($adapter);
             if($confirm){
-                if($modelPolicial->deletePolicial($id)){
+                if($this->getPolicialTable()->deletePolicial($id)){
                     
                     $this->flashMessenger()->addSuccessMessage("Policial de ID $id deletado com sucesso");
                     // redirecionar para action index
@@ -187,7 +167,7 @@ class PolicialController extends AbstractActionController {
             }
             else{
                 // enviar para view o array com key policial e value com todos os policias
-                return new ViewModel(array('policial' => $modelPolicial->find($id)));
+                return new ViewModel(array('policial' => $this->getPolicialTable()->find($id)));
             }
             
 
@@ -196,6 +176,15 @@ class PolicialController extends AbstractActionController {
         }
 
         
+    }
+    
+    //função que retorna uma instancia da classe PoliciaTable 
+    private function getPolicialTable(){
+        // localizar adapter do banco
+        $adapter = $this->getServiceLocator()->get('AdapterDb');
+
+        // return model PolicialTable
+        return new ModelPolicial($adapter); // alias para PolicialTable
     }
 
 }

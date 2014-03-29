@@ -1,0 +1,15 @@
+<ul class="pagination pull-right">
+    <?php if (isset($this->previous)) { ?>
+        <li><a href="?pagina=<?php echo $this->previous ?>">Anterior</a></li>
+    <?php } ?>
+    <?php foreach ($this->pagesInRange as $item): ?>
+        <?php if($this->current == $item): ?>
+            <li class="active"><a href="?pagina=<?php echo $item;?>"><?php echo $item;?></a></li>
+        <?php else: ?>
+            <li><a href="?pagina=<?php echo $item;?>"><?php echo $item;?></a></li>
+        <?php endif; ?>
+    <?php endforeach;?>
+    <?php if (isset($this->next)) { ?>
+        <li><a href="?pagina=<?php echo $this->next ?>">Próximo</a></li>
+    <?php } ?>
+</ul>

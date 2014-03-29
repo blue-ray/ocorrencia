@@ -51,7 +51,6 @@
                     <table class="table table-bordered table-hover table-striped tablesorter">
                         <thead>
                             <tr>
-                                <th class="header headerSortDown"># <i class="fa fa-sort"></i></th>
                                 <th class="header">Numeral <i class="fa fa-sort"></i></th>
                                 <th class="header">Nome <i class="fa fa-sort"></i></th>
                                 <th class="header">Nome de Guerra <i class="fa fa-sort"></i></th>
@@ -65,35 +64,28 @@
 
                         <tbody>
                             <?php 
-                            
                                 foreach ($this->policiais as $i=>$policial): ?>
+                                
                                 <tr>
-                                    <td><?php echo ++$i; ?></td>
-                                    <td><?php echo $policial->numeral; ?></td>
-                                    <td><?php echo $policial->nome; ?></td>
-                                    <td><?php echo $policial->nome_guerra; ?></td>
-                                    <td><?php echo $policial->matricula; ?></td>
-                                    <td><?php echo $policial->id_graduacao; ?></td>
-                                    <td><?php echo $policial->data_nasc; ?></td>
-                                    <td class="text-center"><?php echo $policial->sexo; ?></td>
+                                    <td><?php echo $policial->getNumeral(); ?></td>
+                                    <td><?php echo $policial->getNome(); ?></td>
+                                    <td><?php echo $policial->getNome_guerra(); ?></td>
+                                    <td><?php echo $policial->getMatricula(); ?></td>
+                                    <td><?php echo $policial->getId_graduacao(); ?></td>
+                                    <td><?php echo $this->util()->toDateDMY($policial->getData_nasc()); ?></td>
+                                    <td class="text-center"><?php echo $policial->getSexo(); ?></td>
                                     <td>
-                                        <a class="btn btn-xs btn-info" title="Visualizar" href="<?php echo $this->url('policiais', array('action' => 'detalhes', 'id' => $policial->id_policial)); ?>"><span class="glyphicon glyphicon-new-window"></span></a>
-                                        <a class="btn btn-xs btn-warning" title="Editar" href="<?php echo $this->url('policiais', array("action" => "editar", "id" => $policial->id_policial)); ?>"><span class="glyphicon glyphicon-edit"></span></a>
-                                        <a class="btn btn-xs btn-danger" title="Deletar" href="<?php echo $this->url('policiais', array("action" => "deletar", "id" => $policial->id_policial, 'confirm' => 0)); ?>"><span class="glyphicon glyphicon-floppy-remove"></span></a>
+                                        <a class="btn btn-xs btn-info" title="Visualizar" href="<?php echo $this->url('policiais', array('action' => 'detalhes', 'id' => $policial->getId_policial())); ?>"><span class="glyphicon glyphicon-new-window"></span></a>
+                                        <a class="btn btn-xs btn-warning" title="Editar" href="<?php echo $this->url('policiais', array("action" => "editar", "id" => $policial->getId_policial())); ?>"><span class="glyphicon glyphicon-edit"></span></a>
+                                        <a class="btn btn-xs btn-danger" title="Deletar" href="<?php echo $this->url('policiais', array("action" => "deletar", "id" => $policial->getId_policial(), 'confirm' => 0)); ?>"><span class="glyphicon glyphicon-floppy-remove"></span></a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
 
-                    <ul class="pagination pull-right">
-                        <li><a href="#">Anterior</a></li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">Próximo</a></li>
-                    </ul>
+                    
+                    <?php echo $this->paginationControl($this->policiais, 'Sliding', 'application/partials/paginator.phtml', array('route' => 'policiais/paginator'));?>
                 </div>
             </div>
         </div>

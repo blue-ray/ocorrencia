@@ -51,6 +51,9 @@ class Module {
                     return new View\Helper\Message($sm->getServiceLocator()->
                             get('ControllerPluginManager')->get('flashmessenger'));
                 },
+                'util' => function($sm) {
+                    return new View\Helper\Util();
+                },
             )
         );
     }
