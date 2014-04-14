@@ -1,0 +1,81 @@
+
+
+<div class="row">
+
+    <div class="col-lg-12">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    <i class="fa fa-desktop"></i> Nova Ocorrência
+                    
+                </div>
+            </div>
+            <form class="form-horizontal" role="form" method="POST" action="<?php echo $this->url('ocorrencia', array('action' => 'adicionar')); ?>">
+                <div class="panel-body">
+                    <div class="form-group ">
+                        <label for="inputEndereco" class="col-lg-3 col-md-3 control-label">Endereço:</label>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="id_end" id="id_end">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-success" type="button"><i class="fa fa-plus"></i></button>
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="selectViatura" class="col-lg-3 col-md-3 control-label">Viatura:</label>
+                        <div class="col-lg-5 col-md-5">
+                            <?php echo $this->util()->comboVtr(); ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="selectArea" class="col-lg-3 col-md-3 control-label">Área:</label>
+                        <div class="col-lg-5 col-md-5">
+                            <?php echo $this->util()->comboArea(); ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="selectPolicial" class="col-lg-3 col-md-3 control-label">Policiais:</label>
+                        <div class="col-lg-6 col-md-6">
+                           <?php echo $this->util()->comboPolicial(); ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputData" class="col-lg-3 col-md-3 control-label">Data:</label>
+                        <div class="col-lg-2 col-md-2">
+                            <input type="text" name="data" class="form-control dataPicker" id="data" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputHora" class="col-lg-3 col-md-3 control-label">Horário:</label>
+                        <div class="col-lg-2 col-md-2">
+                            <input type="time" name="horario" class="form-control" id="inputHora" >
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputNarracao" class="col-lg-3 col-md-3 control-label">Narração:</label>
+                        <div class="col-lg-6 col-md-6">
+                            <textarea name="narracao" class="form-control" id="inputNarracao" rows="5" ></textarea>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="panel-footer">
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                    <a href="<?php echo $this->url('ocorrencia'); ?>" class="btn btn-default">Voltar</a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+<?php include_once 'modalVitima.php'; ?>
+
+

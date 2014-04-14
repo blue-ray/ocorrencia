@@ -37,13 +37,7 @@
                      <div class="form-group">
                         <label for="selectGraduacao" class="col-lg-3 col-md-3 control-label">Graduação:</label>
                         <div class="col-lg-2 col-md-2">
-                            <select  name="id_graduacao" class="form-control" id="selectGraduacao" >
-                                <option value="">Selecione</option>
-                                <option value="1">Soldado</option>
-                                <option value="2">Cabo</option>
-                                <option value="3">Sargento</option>
-                                <option value="4">Tenente</option>
-                            </select>
+                            <?php echo $this->util()->comboGraduacao(); ?>
                         </div>
                     </div>
                     <div class="form-group">

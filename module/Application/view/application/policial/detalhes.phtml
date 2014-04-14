@@ -19,7 +19,7 @@
                     <dt>Matrícula:</dt>
                     <dd><?php echo $this->policial->getMatricula(); ?></dd>
                     <dt>Graduação:</dt>
-                    <dd><?php echo $this->policial->getId_graduacao(); ?></dd>
+                    <dd><?php echo $this->policial->getGraduacao()->getNome_graduacao(); ?></dd>
                     <dt>Data de Nascimento:</dt>
                     <dd><?php echo $this->util()->toDateDMY($policial->getData_nasc()); ?></dd>
                     <dt>Sexo:</dt>

@@ -1,11 +1,12 @@
 <?php
-
 namespace Application\Model;
+use Application\Model\Graduacao;
+use Application\View\Helper\Util;
 
 class Policial {
 
     private $id_policial;
-    private $id_graduacao;
+    private $graduacao;
     private $numeral;
     private $nome;
     private $nome_guerra;
@@ -14,8 +15,11 @@ class Policial {
     private $sexo;
 
     public function exchangeArray($data) {
+        //objeto Graduacao
+        //$grad = new Graduacao($data['id_grad'], $data['graduacao']);
+        
         $this->id_policial = (!empty($data['id_policial'])) ? $data['id_policial'] : null;
-        $this->id_graduacao = (!empty($data['id_graduacao'])) ? $data['id_graduacao'] : null;
+        $this->graduacao = (!empty($data['id_grad'])) ? new Graduacao($data['id_grad'], $data['graduacao']) : null;
         $this->numeral = (!empty($data['numeral'])) ? $data['numeral'] : null;
         $this->nome = (!empty($data['nome'])) ? $data['nome'] : null;
         $this->nome_guerra = (!empty($data['nome_guerra'])) ? $data['nome_guerra'] : null;
@@ -26,10 +30,6 @@ class Policial {
    
     public function getId_policial() {
         return $this->id_policial;
-    }
-
-    public function getId_graduacao() {
-        return $this->id_graduacao;
     }
 
     public function getNumeral() {
@@ -60,9 +60,6 @@ class Policial {
         $this->id_policial = $id_policial;
     }
 
-    public function setId_graduacao($id_graduacao) {
-        $this->id_graduacao = $id_graduacao;
-    }
 
     public function setNumeral($numeral) {
         $this->numeral = $numeral;
@@ -81,11 +78,20 @@ class Policial {
     }
 
     public function setData_nasc($data_nasc) {
-        $this->data_nasc = $data_nasc;
+        $this->data_nasc = Util::toDateYMD($data_nasc);
     }
 
     public function setSexo($sexo) {
         $this->sexo = $sexo;
+    }
+
+    public function getGraduacao() {
+        return $this->graduacao;
+    }
+    
+   
+    public function setGraduacao($graduacao) {
+        $this->graduacao = $graduacao;
     }
 
 

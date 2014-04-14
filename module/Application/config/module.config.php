@@ -71,6 +71,54 @@ return array(
                 ),
             ),
             
+            # segment para controller policial
+            'ocorrencia' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/ocorrencia[/:action][/:id][/:confirm]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'OcorrenciaController',
+                        'action' => 'index',
+                    ),
+                ),
+                
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route' => '/[:controller[/:action]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                            ),
+                        ),
+                    ),
+                   
+                ),
+            ),
+            
+            # segment para controller viaturas
+            'viaturas' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/viatura[/:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'ViaturaController',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
             
             # segment para controller municipio
             'Municipio' => array(
@@ -147,7 +195,9 @@ return array(
             'Application\Controller\Index' => 'Application\Controller\IndexController',
             'MunicipioController' => 'Application\Controller\MunicipioController',
             'VitimaController' => 'Application\Controller\VitimaController',
-            'PolicialController' => 'Application\Controller\PolicialController'
+            'PolicialController' => 'Application\Controller\PolicialController',
+            'OcorrenciaController' => 'Application\Controller\OcorrenciaController',
+            'ViaturaController' => 'Application\Controller\ViaturaController'
         ),
     ),
     'view_manager' => array(

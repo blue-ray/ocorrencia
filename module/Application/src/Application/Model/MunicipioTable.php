@@ -14,6 +14,8 @@ use Zend\Db\Adapter\Adapter,
 class MunicipioTable {
 
     protected $tableGateway;
+    protected $adapter;
+    protected $resultSetPrototype;
     /**
      * Contrutor com dependencia do Adapter do Banco
      * 
@@ -21,10 +23,11 @@ class MunicipioTable {
      */
     
     public function __construct(Adapter $adapter) {
-        $resultSetPrototype = new ResultSet();
-        $resultSetPrototype->setArrayObjectPrototype(new Municipio());
+        $this->adapter = $adapter;
+        $this->resultSetPrototype = new ResultSet();
+        $this->resultSetPrototype->setArrayObjectPrototype(new Municipio());
 
-        $this->tableGateway = new TableGateway('municipio', $adapter, null, $resultSetPrototype);
+        $this->tableGateway = new TableGateway('municipio', $adapter, null, $this->resultSetPrototype);
     }
 
     /**

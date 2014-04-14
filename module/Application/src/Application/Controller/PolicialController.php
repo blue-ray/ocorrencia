@@ -6,6 +6,8 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Application\Model\PolicialTable as ModelPolicial;
 use Application\Model\Policial;
+use Application\Model\GraduacaoTable as ModelGraduacao;
+use Application\Model\Graduacao;
 
 class PolicialController extends AbstractActionController {
 
@@ -14,9 +16,13 @@ class PolicialController extends AbstractActionController {
         $currentPage = $this->params()->fromQuery('pagina');
         
         // Quantidade de itens por págima
-        $countPerPage = "5";   
+        $countPerPage = "5";
+        $policiais = $this->getPolicialTable()->fetchAll($currentPage,$countPerPage);
+        $grads = $this->getGraduacaoTable()->fetchAll();
+        
+       
         // enviar para view o array com key policial e value com todos os policias
-        return new ViewModel(array('policiais' => $this->getPolicialTable()->fetchAll($currentPage,$countPerPage)));
+        return new ViewModel(array('policiais' => $policiais, 'grads' => $grads));
     }
 
     public function adicionarAction() {
@@ -34,7 +40,10 @@ class PolicialController extends AbstractActionController {
                 
                 $policial = new Policial();
                 $policial->setId_policial(0);
-                $policial->setId_graduacao($postData['id_graduacao']);
+                
+                $grad = $this->getGraduacaoTable()->find($postData['id_graduacao']);
+                
+                $policial->setGgraduacao($grad);
                 $policial->setNumeral($postData['numeral']);
                 $policial->setNome(strtoupper($postData['nome']));
                 $policial->setNome_guerra(strtoupper($postData['nome_guerra']));
@@ -92,7 +101,10 @@ class PolicialController extends AbstractActionController {
                 
                 $policial = new Policial();
                 $policial->setId_policial($postData['id']);
-                $policial->setId_graduacao($postData['id_graduacao']);
+                
+                $grad = $this->getGraduacaoTable()->find($postData['id_graduacao']);
+                
+                $policial->setGraduacao($grad);
                 $policial->setNumeral($postData['numeral']);
                 $policial->setNome(strtoupper($postData['nome']));
                 $policial->setNome_guerra(strtoupper($postData['nome_guerra']));
@@ -185,6 +197,15 @@ class PolicialController extends AbstractActionController {
 
         // return model PolicialTable
         return new ModelPolicial($adapter); // alias para PolicialTable
+    }
+    
+    //função que retorna uma instancia da classe GraduacaoTable 
+    private function getGraduacaoTable(){
+        // localizar adapter do banco
+        $adapter = $this->getServiceLocator()->get('AdapterDb');
+
+        // return model PolicialTable
+        return new ModelGraduacao($adapter); // alias para GraduacaoTable
     }
 
 }
