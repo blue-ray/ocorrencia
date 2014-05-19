@@ -1,6 +1,42 @@
-<form class="form-signin" role="form">
+<!--<form class="form-signin" role="form">
     <h2 class="form-signin-heading">SGO :: Autenticação</h2>
     <input type="input" class="form-control" placeholder="Usuário" required="" autofocus="">
     <input type="password" class="form-control" placeholder="Senha" required="">
     <button class="btn btn-lg btn-primary btn-block" type="submit">Logar</button>
-</form>
+</form> -->
+
+<?php
+// within a view script
+$form = $this->form;
+$form->prepare();
+
+// Render the opening tag
+echo $this->form()->openTag($form);
+?>
+
+<div class="form_group">
+
+    <?php $name = $form->get('username'); ?>
+    <label for="<?php echo $name->getName(); ?>"><?php echo $name->getOption('label'); ?></label>
+    <input type="<?php echo $name->getAttribute('type'); ?>" class="form-control" name="<?php echo $name->getName(); ?>">
+
+</div>
+
+<div class="form_group">
+
+    <?php
+    $password = $form->get('password');
+    ?>
+    <label for="<?php echo $password->getName(); ?>"><?php echo $password->getOption('label'); ?></label>
+    <input type="<?php echo $password->getAttribute('type'); ?>" class="form-control" name="<?php echo $password->getName(); ?>">
+
+    <br/>
+    <?php $submit = $form->get('submit'); ?>
+    <button type="<?php echo $submit->getAttribute('type'); ?>" 
+            id="<?php echo $submit->getAttribute('id'); ?>" 
+            class="btn btn-default">Entrar</button>
+
+
+    <?php echo $this->form()->closeTag() ?>    
+    
+</div>

@@ -12,12 +12,35 @@ return array(
     'router' => array(
         'routes' => array(
             'auth' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/auth',
+                    'defaults' => array(
+                        'module' => 'auth',
+                        'controller' => 'AuthController',
+                        'action' => 'index',
+                    ),
+                ),
+            ),
+            'login' => array(
                 'type'      => 'Literal',
                 'options'   => array(
-                    'route'    => '/login',
+                    'route'    => '/auth/login',
                     'defaults' => array(
+                        'module' => 'auth',
                         'controller' => 'AuthController',
-                        'action'     => 'index',
+                        'action' => 'login',
+                    ),
+                ),
+            ),
+            'logout' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/auth/logout',
+                    'defaults' => array(
+                        'module' => 'auth',
+                        'controller' => 'AuthController',
+                        'action' => 'logout',
                     ),
                 ),
             ),
@@ -28,7 +51,14 @@ return array(
     # definir e gerenciar servicos
     'service_manager' => array(
         'factories' => array(
-            #'translator' => 'Zend\I18n\Translator\TranslatorServiceFactory',
+            'Session' => function($sm) {
+                return new Zend\Session\Container('ocorrencia');
+            },
+            'Auth\Service\Auth' => function($sm) {
+                $dbAdapter = $sm->get('AdapterDb');
+                return new Auth\Service\Auth($dbAdapter);
+            },
+        #'translator' => 'Zend\I18n\Translator\TranslatorServiceFactory',
         ),
     ),
 
